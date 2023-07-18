@@ -52,6 +52,19 @@ return {
     end,
     event = "User AstroFile",
     config = require "plugins.configs.lspconfig",
+    opts = {
+      servers = { volar = {} },
+      setup = {
+        volar = function()
+          require("lazyvim.util").on_attach(function(client)
+            if client.name == "volar" then
+              client.resolved_capabilities.document_formatting = false
+              client.resolved_capabilities.document_range_formatting = false
+            end
+          end)
+        end,
+      },
+    },
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
