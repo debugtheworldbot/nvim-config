@@ -1,195 +1,269 @@
 return {
   "nvim-lua/plenary.nvim",
   "echasnovski/mini.bufremove",
-  { "AstroNvim/astrotheme", opts = { plugins = { ["dashboard-nvim"] = true } } },
-  { "max397574/better-escape.nvim", event = "InsertCharPre", opts = { timeout = 300 } },
-  { "NMAC427/guess-indent.nvim", event = "User AstroFile", config = require "plugins.configs.guess-indent" },
-  { -- TODO: REMOVE neovim-session-manager with AstroNvim v4
   {
-    "arcticicestudio/nord-vim",
-    event = "VeryLazy",
-  },
-  {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  { "catppuccin/nvim",      name = "catppuccin",            lazy = false },
-  -- { "AstroNvim/astrotheme",   opts = { plugins = { ["dashboard-nvim"] = true } } },
-  { "famiu/bufdelete.nvim", cmd = { "Bdelete", "Bwipeout" } },
-  {
-    "nat-418/boole.nvim",
-    event = "VeryLazy",
+    "AstroNvim/astrotheme",
     opts = {
-      mappings = {
-        increment = "<C-a>",
-        decrement = "<C-x>",
-      },
-      -- User defined loops
-      additions = {
-        { "Foo", "Bar" },
-        { "tic", "tac", "toe" },
-        { "xs",  "sm",  "lg", "xl", "2xl", "3xl" },
-      },
-      allow_caps_additions = {
-        { "enable", "disable" },
-        -- enable → disable
-        -- Enable → Disable
-        -- ENABLE → DISABLE
-        -- false
+      plugins = {
+        ["dashboard-nvim"] = true,
       },
     },
   },
-
   {
-    "folke/zen-mode.nvim",
+    "max397574/better-escape.nvim",
+    event = "InsertCharPre",
     opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
+      timeout = 300,
     },
   },
-  -- { "github/copilot.vim", lazy = false },
-  {
-    "phaazon/hop.nvim",
-    branch = "v2", -- optional but strongly recommended
-    event = "VeryLazy",
-    config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
-    end,
-  },
-  { "max397574/better-escape.nvim", event = "InsertCharPre",        opts = { timeout = 300 } },
   {
     "NMAC427/guess-indent.nvim",
     event = "User AstroFile",
     config = require "plugins.configs.guess-indent",
   },
-  {
-    -- TODO: REMOVE neovim-session-manager with AstroNvim v4
-    "Shatur/neovim-session-manager",
-    event = "BufWritePost",
-    cmd = "SessionManager",
-    enabled = vim.g.resession_enabled ~= true,
-  },
-  {
-    "stevearc/resession.nvim",
-    enabled = vim.g.resession_enabled == true,
-    opts = {
-      buf_filter = function(bufnr) return require("astronvim.utils.buffer").is_restorable(bufnr) end,
-      tab_buf_filter = function(tabpage, bufnr) return vim.tbl_contains(vim.t[tabpage].bufs, bufnr) end,
-      extensions = { astronvim = {} },
+  { -- TODO: REMOVE neovim-session-manager with AstroNvim v4
+    {
+      "arcticicestudio/nord-vim",
+      event = "VeryLazy",
     },
-  },
-  {
-    "s1n7ax/nvim-window-picker",
-    main = "window-picker",
-    opts = { picker_config = { statusline_winbar_picker = { use_winbar = "smart" } } },
-  },
-  {
-    "mrjones2014/smart-splits.nvim",
-    opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
-  },
-  {
-    "windwp/nvim-autopairs",
-    event = "User AstroFile",
-    opts = {
-      check_ts = true,
-      ts_config = { java = false },
-      fast_wrap = {
-        map = "<M-e>",
-        chars = { "{", "[", "(", '"', "'" },
-        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-        offset = 0,
-        end_key = "$",
-        keys = "qwertyuiopzxcvbnmasdfghjkl",
-        check_comma = true,
-        highlight = "PmenuSel",
-        highlight_grey = "LineNr",
-      },
+    {
+      "Exafunction/codeium.vim",
+      event = "BufEnter",
     },
-    config = require "plugins.configs.nvim-autopairs",
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
-      disable = { filetypes = { "TelescopePrompt" } },
+    {
+      "folke/tokyonight.nvim",
+      lazy = false,
+      priority = 1000,
+      opts = {},
     },
-    config = require "plugins.configs.which-key",
-  },
-  {
-    "kevinhwang91/nvim-ufo",
-    event = { "User AstroFile", "InsertEnter" },
-    dependencies = { "kevinhwang91/promise-async" },
-    opts = {
-      preview = {
+    {
+      "catppuccin/nvim",
+      name = "catppuccin",
+      lazy = false,
+    }, -- { "AstroNvim/astrotheme",   opts = { plugins = { ["dashboard-nvim"] = true } } },
+    {
+      "famiu/bufdelete.nvim",
+      cmd = { "Bdelete", "Bwipeout" },
+    },
+    {
+      "nat-418/boole.nvim",
+      event = "VeryLazy",
+      opts = {
         mappings = {
-          scrollB = "<C-b>",
-          scrollF = "<C-f>",
-          scrollU = "<C-u>",
-          scrollD = "<C-d>",
+          increment = "<C-a>",
+          decrement = "<C-x>",
+        },
+        -- User defined loops
+        additions = { { "Foo", "Bar" }, { "tic", "tac", "toe" }, { "xs", "sm", "lg", "xl", "2xl", "3xl" } },
+        allow_caps_additions = {
+          { "enable", "disable" }, -- enable → disable
+          -- Enable → Disable
+          -- ENABLE → DISABLE
+          -- false
         },
       },
-      provider_selector = function(_, filetype, buftype)
-        local function handleFallbackException(bufnr, err, providerName)
-          if type(err) == "string" and err:match "UfoFallbackException" then
-            return require("ufo").getFolds(bufnr, providerName)
-          else
-            return require("promise").reject(err)
-          end
-        end
-
-        return (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
-          or function(bufnr)
-            return require("ufo")
-              .getFolds(bufnr, "lsp")
-              :catch(function(err) return handleFallbackException(bufnr, err, "treesitter") end)
-              :catch(function(err) return handleFallbackException(bufnr, err, "indent") end)
-          end
-      end,
     },
-  },
-  {
-    "numToStr/Comment.nvim",
-    keys = {
-      { "gc", mode = { "n", "v" }, desc = "Comment toggle linewise" },
-      { "gb", mode = { "n", "v" }, desc = "Comment toggle blockwise" },
-    },
-    opts = function()
-      local commentstring_avail, commentstring = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
-      return commentstring_avail and commentstring and { pre_hook = commentstring.create_pre_hook() } or {}
-    end,
-  },
-  {
-    "akinsho/toggleterm.nvim",
-    cmd = { "ToggleTerm", "TermExec" },
-    opts = {
-      highlights = {
-        Normal = { link = "Normal" },
-        NormalNC = { link = "NormalNC" },
-        NormalFloat = { link = "NormalFloat" },
-        FloatBorder = { link = "FloatBorder" },
-        StatusLine = { link = "StatusLine" },
-        StatusLineNC = { link = "StatusLineNC" },
-        WinBar = { link = "WinBar" },
-        WinBarNC = { link = "WinBarNC" },
+    {
+      "folke/zen-mode.nvim",
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
       },
-      size = 10,
-      on_create = function()
-        vim.opt.foldcolumn = "0"
-        vim.opt.signcolumn = "no"
+    }, -- { "github/copilot.vim", lazy = false },
+    {
+      "phaazon/hop.nvim",
+      branch = "v2", -- optional but strongly recommended
+      event = "VeryLazy",
+      config = function()
+        -- you can configure Hop the way you like here; see :h hop-config
+        require("hop").setup {
+          keys = "etovxqpdygfblzhckisuran",
+        }
       end,
-      open_mapping = [[<F7>]],
-      shading_factor = 2,
-      direction = "float",
-      float_opts = { border = "rounded" },
+    },
+    {
+      "max397574/better-escape.nvim",
+      event = "InsertCharPre",
+      opts = {
+        timeout = 300,
+      },
+    },
+    {
+      "NMAC427/guess-indent.nvim",
+      event = "User AstroFile",
+      config = require "plugins.configs.guess-indent",
+    },
+    {
+      -- TODO: REMOVE neovim-session-manager with AstroNvim v4
+      "Shatur/neovim-session-manager",
+      event = "BufWritePost",
+      cmd = "SessionManager",
+      enabled = vim.g.resession_enabled ~= true,
+    },
+    {
+      "stevearc/resession.nvim",
+      enabled = vim.g.resession_enabled == true,
+      opts = {
+        buf_filter = function(bufnr) return require("astronvim.utils.buffer").is_restorable(bufnr) end,
+        tab_buf_filter = function(tabpage, bufnr) return vim.tbl_contains(vim.t[tabpage].bufs, bufnr) end,
+        extensions = {
+          astronvim = {},
+        },
+      },
+    },
+    {
+      "s1n7ax/nvim-window-picker",
+      main = "window-picker",
+      opts = {
+        picker_config = {
+          statusline_winbar_picker = {
+            use_winbar = "smart",
+          },
+        },
+      },
+    },
+    {
+      "mrjones2014/smart-splits.nvim",
+      opts = {
+        ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" },
+        ignored_buftypes = { "nofile" },
+      },
+    },
+    {
+      "windwp/nvim-autopairs",
+      event = "User AstroFile",
+      opts = {
+        check_ts = true,
+        ts_config = {
+          java = false,
+        },
+        fast_wrap = {
+          map = "<M-e>",
+          chars = { "{", "[", "(", '"', "'" },
+          pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+          offset = 0,
+          end_key = "$",
+          keys = "qwertyuiopzxcvbnmasdfghjkl",
+          check_comma = true,
+          highlight = "PmenuSel",
+          highlight_grey = "LineNr",
+        },
+      },
+      config = require "plugins.configs.nvim-autopairs",
+    },
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      opts = {
+        icons = {
+          group = vim.g.icons_enabled and "" or "+",
+          separator = "",
+        },
+        disable = {
+          filetypes = { "TelescopePrompt" },
+        },
+      },
+      config = require "plugins.configs.which-key",
+    },
+    {
+      "kevinhwang91/nvim-ufo",
+      event = { "User AstroFile", "InsertEnter" },
+      dependencies = { "kevinhwang91/promise-async" },
+      opts = {
+        preview = {
+          mappings = {
+            scrollB = "<C-b>",
+            scrollF = "<C-f>",
+            scrollU = "<C-u>",
+            scrollD = "<C-d>",
+          },
+        },
+        provider_selector = function(_, filetype, buftype)
+          local function handleFallbackException(bufnr, err, providerName)
+            if type(err) == "string" and err:match "UfoFallbackException" then
+              return require("ufo").getFolds(bufnr, providerName)
+            else
+              return require("promise").reject(err)
+            end
+          end
+
+          return (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
+            or function(bufnr)
+              return require("ufo")
+                .getFolds(bufnr, "lsp")
+                :catch(function(err) return handleFallbackException(bufnr, err, "treesitter") end)
+                :catch(function(err) return handleFallbackException(bufnr, err, "indent") end)
+            end
+        end,
+      },
+    },
+    {
+      "numToStr/Comment.nvim",
+      keys = {
+        {
+          "gc",
+          mode = { "n", "v" },
+          desc = "Comment toggle linewise",
+        },
+        {
+          "gb",
+          mode = { "n", "v" },
+          desc = "Comment toggle blockwise",
+        },
+      },
+      opts = function()
+        local commentstring_avail, commentstring = pcall(require, "ts_context_commentstring.integrations.comment_nvim")
+        return commentstring_avail
+            and commentstring
+            and {
+              pre_hook = commentstring.create_pre_hook(),
+            }
+          or {}
+      end,
+    },
+    {
+      "akinsho/toggleterm.nvim",
+      cmd = { "ToggleTerm", "TermExec" },
+      opts = {
+        highlights = {
+          Normal = {
+            link = "Normal",
+          },
+          NormalNC = {
+            link = "NormalNC",
+          },
+          NormalFloat = {
+            link = "NormalFloat",
+          },
+          FloatBorder = {
+            link = "FloatBorder",
+          },
+          StatusLine = {
+            link = "StatusLine",
+          },
+          StatusLineNC = {
+            link = "StatusLineNC",
+          },
+          WinBar = {
+            link = "WinBar",
+          },
+          WinBarNC = {
+            link = "WinBarNC",
+          },
+        },
+        size = 10,
+        on_create = function()
+          vim.opt.foldcolumn = "0"
+          vim.opt.signcolumn = "no"
+        end,
+        open_mapping = [[<F7>]],
+        shading_factor = 2,
+        direction = "float",
+        float_opts = {
+          border = "rounded",
+        },
+      },
     },
   },
 }
