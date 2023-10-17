@@ -14,6 +14,9 @@ return {
         selection_caret = get_icon("Selected", 1),
         path_display = { "truncate" },
         sorting_strategy = "ascending",
+        file_ignore_patterns = {
+          "yarn.lock",
+        },
         layout_config = {
           horizontal = { prompt_position = "top", preview_width = 0.55 },
           vertical = { mirror = false },
