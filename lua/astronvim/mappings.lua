@@ -330,6 +330,7 @@ if is_available "toggleterm.nvim" then
   if vim.fn.executable "lazygit" == 1 then
     maps.n["<leader>g"] = sections.g
     maps.n["<leader>gg"] = { function() utils.toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
+    maps.n["<C-g>"] = { function() utils.toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
     maps.n["<leader>tl"] = { function() utils.toggle_term_cmd "lazygit" end, desc = "ToggleTerm lazygit" }
   end
   if vim.fn.executable "node" == 1 then
