@@ -1,11 +1,52 @@
 return {
-  "nvim-lua/plenary.nvim",
-  "echasnovski/mini.bufremove",
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "echasnovski/mini.bufremove", lazy = true },
+  { "AstroNvim/astrotheme", lazy = true, opts = { plugins = { ["dashboard-nvim"] = true } } },
+  { "max397574/better-escape.nvim", event = "InsertCharPre", opts = { timeout = 300 } },
+  { "NMAC427/guess-indent.nvim", event = "User AstroFile", config = require "plugins.configs.guess-indent" },
+  { -- TODO: REMOVE neovim-session-manager with AstroNvim v4
+    "Shatur/neovim-session-manager",
+    event = "BufWritePost",
+    cmd = "SessionManager",
+    enabled = vim.g.resession_enabled ~= true,
+  },
   {
-    "AstroNvim/astrotheme",
+    "stevearc/resession.nvim",
+    enabled = vim.g.resession_enabled == true,
+    lazy = true,
     opts = {
-      plugins = {
-        ["dashboard-nvim"] = true,
+      buf_filter = function(bufnr) return require("astronvim.utils.buffer").is_restorable(bufnr) end,
+      tab_buf_filter = function(tabpage, bufnr) return vim.tbl_contains(vim.t[tabpage].bufs, bufnr) end,
+      extensions = { astronvim = {} },
+    },
+  },
+  {
+    "s1n7ax/nvim-window-picker",
+    lazy = true,
+    main = "window-picker",
+    opts = { picker_config = { statusline_winbar_picker = { use_winbar = "smart" } } },
+  },
+  {
+    "mrjones2014/smart-splits.nvim",
+    lazy = true,
+    opts = { ignored_filetypes = { "nofile", "quickfix", "qf", "prompt" }, ignored_buftypes = { "nofile" } },
+  },
+  {
+    "windwp/nvim-autopairs",
+    event = "User AstroFile",
+    opts = {
+      check_ts = true,
+      ts_config = { java = false },
+      fast_wrap = {
+        map = "<M-e>",
+        chars = { "{", "[", "(", '"', "'" },
+        pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+        offset = 0,
+        end_key = "$",
+        keys = "qwertyuiopzxcvbnmasdfghjkl",
+        check_comma = true,
+        highlight = "PmenuSel",
+        highlight_grey = "LineNr",
       },
     },
   },
