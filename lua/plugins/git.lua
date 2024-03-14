@@ -13,5 +13,6 @@ return {
       untracked = { text = get_icon "GitSign" },
     },
     worktrees = vim.g.git_worktrees,
+    current_line_blame = true,
   },
 }
