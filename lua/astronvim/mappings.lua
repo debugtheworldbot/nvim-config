@@ -22,6 +22,7 @@ maps.n["<leader>1"] = { "^", desc = "go to start of line" }
 maps.n["<leader>2"] = { "$", desc = "go to end of line" }
 -- 'greastet mapping erver'
 maps.v["<leader>p"] = { '"_dP', desc = "delete selection register and paste" }
+maps.n["<leader>P"] = { '"0p', desc = "paste copied register" }
 -- copy to system clipboard
 maps.n["<leader>y"] = { '"+y' }
 maps.v["/"] = { 'y/\\V<C-R>"<cr>' }
