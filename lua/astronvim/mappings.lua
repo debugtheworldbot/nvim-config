@@ -20,6 +20,10 @@ if not vim.g.icons_enabled then vim.tbl_map(function(opts) opts.desc = opts.desc
 -- custom
 maps.n["<leader>1"] = { "^", desc = "go to start of line" }
 maps.n["<leader>2"] = { "$", desc = "go to end of line" }
+-- restart server
+maps.n["<leader>rl"] = { "<cmd>LspRestart<cr>", desc = "restart lsp" }
+maps.n["<leader>rn"] = { "<cmd>source $MYVIMRC<cr>", desc = "restart neovim" }
+
 -- 'greastet mapping erver'
 maps.v["<leader>p"] = { '"_dP', desc = "delete selection register and paste" }
 maps.n["<leader>P"] = { '"0p', desc = "paste copied register" }
