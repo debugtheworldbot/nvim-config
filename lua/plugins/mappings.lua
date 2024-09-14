@@ -70,6 +70,8 @@ return {
             ":HopChar1<cr>",
             desc = "hint 2 words",
           },
+          ["<C-'>"] = { "<cmd>1ToggleTerm direction=float<cr>", desc = "ToggleTerm float" },
+          ["<C-;>"] = { "<cmd>2ToggleTerm direction=horizontal<cr>", desc = "ToggleTerm horizontal split" },
         },
         v = {
           ["<leader>1"] = {
@@ -88,6 +90,8 @@ return {
           ["<leader>y"] = { '"+y' },
         },
         t = {
+          ["<C-'>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm float" },
+          ["<C-;>"] = { "<Cmd>ToggleTerm<CR>", desc = "ToggleTerm horizontal split" },
           -- setting a mapping to false will disable it
           -- ["<esc>"] = false,
         },
