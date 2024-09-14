@@ -33,6 +33,36 @@ return {{
                 },
                 -- tables with the `name` key will be registered with which-key if it's installed
                 -- this is useful for naming menus
+                ["<leader>1"] = {
+                    "^",
+                    desc = "go to start of line"
+                },
+                ["<leader>2"] = {
+                    "$",
+                    desc = "go to end of line"
+                },
+                -- restart server
+                ["<leader>rl"] = {
+                    "<cmd>LspRestart<cr>",
+                    desc = "restart lsp"
+                },
+                ["<leader>rn"] = {
+                    "<cmd>source $MYVIMRC<cr>",
+                    desc = "restart neovim"
+                },
+
+                -- 'greastet mapping erver'
+                ["<leader>p"] = {
+                    '"_dP',
+                    desc = "delete selection register and paste"
+                },
+                ["<leader>P"] = {
+                    '"0p',
+                    desc = "paste copied register"
+                },
+                -- copy to system clipboard
+                ["<leader>y"] = {'"+y'},
+
                 ["<C-g>"] = {
                     "lazygit",
                     desc = "toggleterm lazygit"
