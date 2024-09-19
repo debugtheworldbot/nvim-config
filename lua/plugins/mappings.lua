@@ -1,3 +1,8 @@
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new { cmd = "lazygit", hidden = true, direction = "float" }
+
+function _lazygit_toggle() lazygit:toggle() end
+
 return {
   {
     "AstroNvim/astrocore",
@@ -58,7 +63,7 @@ return {
           -- copy full file
           ["<leader>Y"] = { 'ggVG"+y', desc = "copy full file to system clipboard" },
           ["<C-g>"] = {
-            "lazygit",
+            "<cmd>lua _lazygit_toggle()<CR>",
             desc = "toggleterm lazygit",
           },
           -- quick save
